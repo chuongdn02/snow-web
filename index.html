@@ -8,10 +8,18 @@
     <title>Website trang trí noel tuyết roi</title>
     <style>
         body {
+            width: 100%;
+            height: 100%;
             font-size: 16px;
             margin: 0;
             overflow: hidden;
-            background-image: url('https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?q=80&w=896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-image: url('https://st.quantrimang.com/photos/image/2017/10/31/thiep-giang-sinh-28.jpg');
+            background-size: cover;
+            /* Kích thước hình nền phủ toàn bộ phần màn hình */
+            background-position: center;
+            /* Canh giữa hình nền */
+
+            /* Không lặp lại hình nền */
         }
 
         canvas {
@@ -26,14 +34,15 @@
 
         img {
             position: fixed;
-            z-index: 2;
+            z-index: 1;
         }
 
 
         #container {
             position: relative;
-            margin-top: 10%;
+            margin-top: 5%;
             display: flex;
+            z-index: 2;
             flex-direction: column;
             align-items: center;
         }
@@ -49,17 +58,18 @@
         }
 
         #rotatingCube {
-            margin-top: 12%;
             position: fixed;
             z-index: 4;
             padding: 15%;
-            top: 60%;
-            left: 60%;
-            height: 20%;
+            top: 50%;
+            left: 50%;
+            margin-top: 20%;
+
             transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
             transform-style: preserve-3d;
             animation: rotateCube 15s infinite linear;
-            width: 50%;
+            width: 100%;
+            height: 100%;
             /* Đặt chiều rộng của rotatingCube thành 50% của trang */
             max-width: 50%;
             max-height: 20%;
@@ -68,50 +78,51 @@
 
         #rotatingCube .cube-face {
             position: absolute;
-            width: 200px;
-            height: 250px;
+            width: 100px;
+            height: 120px;
             background-size: cover;
         }
 
         #rotatingCube .face-1 {
-            transform: rotateY(0deg) translateZ(15vh);
+            transform: rotateY(0deg) translateZ(6vh);
             background-image: url('https://scontent.fdad2-1.fna.fbcdn.net/v/t1.15752-9/403411479_1708460979639415_8569401545130064408_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=JxNfwtEHm9wAX9JpruM&_nc_ht=scontent.fdad2-1.fna&oh=03_AdRS19y1boy6nYhFrO4F6Oa_YT0_bX1B1BcGVrPtRqqkWA&oe=659806F2');
         }
 
         #rotatingCube .face-2 {
-            transform: rotateY(90deg) translateZ(15vh);
+            transform: rotateY(90deg) translateZ(6vh);
             background-image: url('https://scontent.fdad1-1.fna.fbcdn.net/v/t1.15752-9/393113129_7021209131269039_6236139302556446660_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=0eSKnH6uuvsAX_omDGe&_nc_ht=scontent.fdad1-1.fna&oh=03_AdSDzJUEfvL7Aqof_-2LuebNMKZPzzucN3J-oQrRcdkusw&oe=6597EFF7');
         }
 
         #rotatingCube .face-3 {
-            transform: rotateY(180deg) translateZ(15vh);
+            transform: rotateY(180deg) translateZ(6vh);
             background-image: url('https://scontent.fdad1-4.fna.fbcdn.net/v/t1.15752-9/406131900_358419073540865_3046707336558480841_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=TIKUR4vCNn4AX8tBgct&_nc_ht=scontent.fdad1-4.fna&oh=03_AdRSB-bH4meuzY7A5nkw1iQcvf1DsdkTPtiz12G5ORGcGg&oe=6597ED96');
         }
 
         #rotatingCube .face-4 {
-            transform: rotateY(-90deg) translateZ(15vh);
+            transform: rotateY(-90deg) translateZ(6vh);
             background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/403399793_991221258643010_5762902085746830203_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=787q8AMicpcAX_91aVR&_nc_ht=scontent.fdad1-3.fna&oh=03_AdRyJQWr2vvrjWMhjJNG90LdW66pKqw3mYn0AJmto_hDyA&oe=6597F772');
         }
 
+
         @keyframes rotateCube {
             0% {
-                transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
+                transform: translate(-90%, -90%) rotateX(45deg) rotateY(45deg);
             }
 
             25% {
-                transform: translate(-50%, -50%) rotateX(45deg) rotateY(135deg);
+                transform: translate(-70%, -30%) rotateX(45deg) rotateY(135deg);
             }
 
             50% {
-                transform: translate(-50%, -50%) rotateX(45deg) rotateY(225deg);
+                transform: translate(-40%, -90%) rotateX(45deg) rotateY(225deg);
             }
 
             75% {
-                transform: translate(-50%, -50%) rotateX(45deg) rotateY(315deg);
+                transform: translate(-10%, -60%) rotateX(45deg) rotateY(315deg);
             }
 
             100% {
-                transform: translate(-50%, -50%) rotateX(45deg) rotateY(405deg);
+                transform: translate(10%, -80%) rotateX(45deg) rotateY(405deg);
             }
         }
 
@@ -122,9 +133,9 @@
         }
 
         #musicPlayer img {
-            width: 50px;
+            width: 30px;
             /* Adjust the width as needed */
-            height: 50px;
+            height: 30px;
 
             /* Adjust the height as needed */
             cursor: pointer;
