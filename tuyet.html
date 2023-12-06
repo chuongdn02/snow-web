@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website trang trí noel tuyết roi</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        img {
+            position: fixed;
+            z-index: 2;
+        }
+
+        #clock {
+            position: fixed;
+            z-index: 3;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8vw;
+            /* Using viewport width to set font size */
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #rotatingCube {
+            position: fixed;
+            z-index: 4;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
+            transform-style: preserve-3d;
+            animation: rotateCube 15s infinite linear;
+        }
+
+        #rotatingCube .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+        }
+
+        #rotatingCube .face-1 {
+            transform: rotateY(0deg) translateZ(100px);
+            background-image: url('https://scontent.fdad2-1.fna.fbcdn.net/v/t1.15752-9/403411479_1708460979639415_8569401545130064408_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=JxNfwtEHm9wAX9JpruM&_nc_ht=scontent.fdad2-1.fna&oh=03_AdQWjY563P4TG7Kbk4RgxUW_YSQ1Om4nVIVDP2Hg0OrvKw&oe=6597CEB2');
+        }
+
+        #rotatingCube .face-2 {
+            transform: rotateY(90deg) translateZ(100px);
+            background-image: url('https://scontent.fdad1-1.fna.fbcdn.net/v/t1.15752-9/393113129_7021209131269039_6236139302556446660_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=0eSKnH6uuvsAX_omDGe&_nc_ht=scontent.fdad1-1.fna&oh=03_AdSDzJUEfvL7Aqof_-2LuebNMKZPzzucN3J-oQrRcdkusw&oe=6597EFF7');
+        }
+
+        #rotatingCube .face-3 {
+            transform: rotateY(180deg) translateZ(100px);
+            background-image: url('https://scontent.fdad1-4.fna.fbcdn.net/v/t1.15752-9/406131900_358419073540865_3046707336558480841_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=TIKUR4vCNn4AX8tBgct&_nc_ht=scontent.fdad1-4.fna&oh=03_AdRSB-bH4meuzY7A5nkw1iQcvf1DsdkTPtiz12G5ORGcGg&oe=6597ED96');
+        }
+
+        #rotatingCube .face-4 {
+            transform: rotateY(-90deg) translateZ(100px);
+            background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/403399793_991221258643010_5762902085746830203_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=787q8AMicpcAX_91aVR&_nc_ht=scontent.fdad1-3.fna&oh=03_AdRyJQWr2vvrjWMhjJNG90LdW66pKqw3mYn0AJmto_hDyA&oe=6597F772');
+        }
+
+        @keyframes rotateCube {
+            0% {
+                transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotateX(45deg) rotateY(135deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotateX(45deg) rotateY(225deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotateX(45deg) rotateY(315deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateX(45deg) rotateY(405deg);
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: black;">
+
+    <canvas id="snowCanvas"></canvas>
+
+    <img style="z-index: 2; position: fixed; top: 0; left: 0;"
+        src="https://anonyviet.com/resource/tuyetroi/topleft.png" />
+    <img style="z-index: 2; position: fixed; top: 0; right: 0;"
+        src="https://anonyviet.com/resource/tuyetroi/topright.png" />
+    <div
+        style="position: fixed; z-index: 2; bottom: -50px; left: 0; width: 100%; height: 104px; background:url(https://anonyviet.com/resource/tuyetroi/footer-christmas.png) repeat-x bottom left;">
+    </div>
+    <img style="z-index: 2; position: fixed; bottom: 20px; left: 20px;"
+        src="https://anonyviet.com/resource/tuyetroi/bottomleft.png" />
+    <div style="position: fixed; z-index: 2; bottom: 3px; right: 3px; font-size: 1px; color: #8D8D8D;">by <a
+            href="https://anonyviet.com">AnonyViet</a></div>
+
+    <div id="clock"></div>
+
+    <div id="rotatingCube">
+        <div class="cube-face face-1"></div>
+        <div class="cube-face face-2"></div>
+        <div class="cube-face face-3"></div>
+        <div class="cube-face face-4"></div>
+    </div>
+
+    <script>
+        // Falling Snow
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const snowflakes = [];
+
+        function Snowflake() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 3 + 1;
+            this.color = '#fff';
+            this.speed = Math.random() * 3 + 1;
+            this.angle = Math.random() * 360;
+
+            this.update = () => {
+                this.y += this.speed;
+                this.angle += 0.01;
+                this.x += Math.sin(this.angle) * 2;
+
+                if (this.y > canvas.height) {
+                    this.y = -this.radius;
+                    this.x = Math.random() * canvas.width;
+                }
+            };
+
+            this.draw = () => {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            };
+        }
+
+        function createSnowflakes() {
+            for (let i = 0; i < 100; i++) {
+                snowflakes.push(new Snowflake());
+            }
+        }
+
+        function animateSnow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            snowflakes.forEach(snowflake => {
+                snowflake.update();
+                snowflake.draw();
+            });
+            requestAnimationFrame(animateSnow);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        createSnowflakes();
+        animateSnow();
+
+        // Clock
+        const clockElement = document.getElementById('clock');
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+
+</html>
