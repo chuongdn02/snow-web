@@ -1,274 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <body>
 
-    <title>Website trang trí noel tuyết roi</title>
-    <style>
-        body {
-            width: 100%;
-            height: 100%;
-            font-size: 16px;
-            margin: 0;
-            overflow: hidden;
-            background-image: url('https://marketplace.canva.com/EAEpBwpHqVY/1/0/1600w/canva-birthday-zoom-virtual-background-RhcMWXvWUFY.jpg');
-            background-size: cover;
-            /* Kích thước hình nền phủ toàn bộ phần màn hình */
-            background-position: center;
-            /* Canh giữa hình nền */
-
-            /* Không lặp lại hình nền */
-        }
-
-        canvas {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-
-
-        img {
-            position: fixed;
-            z-index: 1;
-        }
-
-
-        #container {
-            position: relative;
-            margin-top: 5%;
-            display: flex;
-            z-index: 2;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #clock {
-            font-size: 8vw;
-            /* Using viewport width to set font size */
-            color: white;
-            font-variant-numeric: slashed-zero;
-            margin-bottom: 20px;
-
-
-        }
-
-        #rotatingCube {
-            position: fixed;
-            z-index: 4;
-            padding: 15%;
-            top: 50%;
-            left: 50%;
-            margin-top: 20%;
-
-            transform: translate(-50%, -50%) rotateX(45deg) rotateY(45deg);
-            transform-style: preserve-3d;
-            animation: rotateCube 15s infinite linear;
-            width: 100%;
-            height: 100%;
-            /* Đặt chiều rộng của rotatingCube thành 50% của trang */
-            max-width: 50%;
-            max-height: 20%;
-            /* Tùy chỉnh chiều rộng tối đa nếu cần */
-        }
-
-        #rotatingCube .cube-face {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-size: cover;
-        }
-
-        #rotatingCube .face-1 {
-            transform: rotateY(0deg) translateZ(11vh);
-            background-image: url('https://zpsocial-f45-org.zadn.vn/92eaa056b1745e2a0765.jpg');
-        }
-
-        #rotatingCube .face-2 {
-            transform: rotateY(90deg) translateZ(11vh);
-            background-image: url('https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/428619204_24727170080262553_5507217268333659636_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=i1pyuVv7Al0AX99KDeH&_nc_ht=scontent.fdad2-1.fna&oh=00_AfDJcs4gG2mhQvs_q70F0V6Za8EhuD_e977Tgo0NJnGXLQ&oe=6607CA52');
-        }
-
-        #rotatingCube .face-3 {
-            transform: rotateY(180deg) translateZ(11vh);
-            background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/82529415_3409785789094291_969511261307928576_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Jj2DjcV1gxoAX9qcU59&_nc_ht=scontent.fdad1-3.fna&oh=00_AfBRlgACVL9reexOLLIAa_TQLnlo7KHkmFbul6tqi8-cow&oe=662A2459');
-        }
-
-        #rotatingCube .face-4 {
-            transform: rotateY(-90deg) translateZ(11vh);
-            background-image: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/418094120_24433405289639035_5166262410697314280_n.jpg?stp=cp6_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=UykgHVxA1pQAX_L2n1T&_nc_ht=scontent.fdad1-3.fna&oh=00_AfBNNkUYFQdAAj3ih5SAHAtoRsW_mTtmqlkg8TWUVMozHw&oe=6606F8D8');
-        }
-
-
-        @keyframes rotateCube {
-            0% {
-                transform: translate(-90%, -90%) rotateX(45deg) rotateY(45deg);
-            }
-
-            25% {
-                transform: translate(-70%, -30%) rotateX(45deg) rotateY(135deg);
-            }
-
-            50% {
-                transform: translate(-40%, -90%) rotateX(45deg) rotateY(225deg);
-            }
-
-            75% {
-                transform: translate(-10%, -60%) rotateX(45deg) rotateY(315deg);
-            }
-
-            100% {
-                transform: translate(10%, -80%) rotateX(45deg) rotateY(405deg);
-            }
-        }
-
-        #musicPlayer {
-            display: flex;
-            margin-right: 50px;
-            align-items: center;
-        }
-
-        #musicPlayer img {
-            width: 30px;
-            /* Adjust the width as needed */
-            height: 30px;
-
-            /* Adjust the height as needed */
-            cursor: pointer;
-            filter: invert(1);
-
-            /* Invert the colors of the image */
-
-        }
-
-        #musicPlayer audio {
-            margin-right: 10px;
-        }
-    </style>
-    <script>
-        function playAudio() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }
-    </script>
-</head>
-
-<body>
-
-    <canvas id="snowCanvas"></canvas>
-
-    <img style="z-index: 2; position: fixed; top: 0; left: 0;"
-        src="https://anonyviet.com/resource/tuyetroi/topleft.png" />
-    <img style="z-index: 2; position: fixed; top: 0; right: 0;"
-        src="https://anonyviet.com/resource/tuyetroi/topright.png" />
-    <div
-        style="position: fixed; z-index: 2; bottom: -50px; left: 0; width: 100%; height: 104px; background:url(https://anonyviet.com/resource/tuyetroi/footer-christmas.png) repeat-x bottom left;">
+    <div class="container2">
+      <div class="content">
+        <canvas id="universe"></canvas>
+      </div>
     </div>
-    <img style="z-index: 2; position: fixed; bottom: 20px; left: 20px;"
-        src="https://anonyviet.com/resource/tuyetroi/bottomleft.png" />
-    <div style="position: fixed; z-index: 2; bottom: 3px; right: 3px; font-size: 1px; color: #8D8D8D;">by <a
-            href="https://anonyviet.com">AnonyViet</a></div>
-
-    <div id="container">
-        <div id="clock">
-
-        </div>
-        <div id="musicPlayer">
-            <img src="https://static.vecteezy.com/system/resources/previews/000/577/015/non_2x/play-button-icon-vector-illustration.jpg"
-                onclick="playAudio()" alt="Play Audio">
-            <audio id="myAudio" loop>
-                <source src="sn.mp3" type="audio/mp3">
-            </audio>
-        </div>
-    </div>
-    <div id="rotatingCube">
-        <div class="cube-face face-1"></div>
-        <div class="cube-face face-2"></div>
-        <div class="cube-face face-3"></div>
-        <div class="cube-face face-4"></div>
+    <div class="title">
+      <h3 class="STARDUST1">2024</h3>
+      <h1 class="STARDUST2">NGUYỄN THỊ THANH THUỶ</h1>
+      <!-- &amp; -->
+      <h3 class="STARDUST3">H A P P Y <strong>❤</strong> W O M E N ' S  D A Y</h3>
+      <img class="img" src="EDIT_ME.png" alt="JUNO_OKYO" />
+      <canvas id="pinkboard"></canvas>
     </div>
 
-
-    <script>
-        // Falling Snow
-        const canvas = document.getElementById('snowCanvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const snowflakes = [];
-
-        function Snowflake() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.radius = Math.random() * 3 + 1;
-            this.color = '#fff';
-            this.speed = Math.random() * 3 + 1;
-            this.angle = Math.random() * 360;
-
-            this.update = () => {
-                this.y += this.speed;
-                this.angle += 0.01;
-                this.x += Math.sin(this.angle) * 2;
-
-                if (this.y > canvas.height) {
-                    this.y = -this.radius;
-                    this.x = Math.random() * canvas.width;
-                }
-            };
-
-            this.draw = () => {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            };
-        }
-
-        function createSnowflakes() {
-            for (let i = 0; i < 100; i++) {
-                snowflakes.push(new Snowflake());
-            }
-        }
-
-        function animateSnow() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            snowflakes.forEach(snowflake => {
-                snowflake.update();
-                snowflake.draw();
-            });
-            requestAnimationFrame(animateSnow);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        createSnowflakes();
-        animateSnow();
-
-        // Clock
-        const clockElement = document.getElementById('clock');
-
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-
-            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
-
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particle.js"></script>
+    <script src="js/universe.js"></script>
+  </body>
 </html>
