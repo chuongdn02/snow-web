@@ -1,32 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeachersDay</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-
-    <div class="container2">
-      <div class="content">
-        <canvas id="universe"></canvas>
+    <div class="gif">
+    </div>
+    <div class="pop-up">
+      <div id="wrapper">
+        <div class="envelope open">
+          <div class="flap front"></div>
+          <div class="flap top"></div>
+          <div class="letter"></div>
+        </div>
       </div>
     </div>
-    <div class="title">
-      <h3 class="STARDUST1">2024</h3>
-      <h1 class="STARDUST2">NGUYỄN THỊ THANH THUỶ</h1>
-      <!-- &amp; -->
-      <h3 class="STARDUST3">H A P P Y <strong>❤</strong> W O M E N ' S  D A Y</h3>
-      <img class="img" src="image.png" alt="JUNO_OKYO" />
-      <canvas id="pinkboard"></canvas>
+    <div class="book">
+      <div class="book-first"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/particle.js"></script>
-    <script src="js/universe.js"></script>
+    <script src="./confetti.js"></script>
+    <script>
+      const startit = () => {
+        setTimeout(function () {
+          confetti.start();
+        }, 2000);
+      };
+
+      const stopit = () => {
+        setTimeout(function () {
+          confetti.stop();
+        }, 7000);
+      };
+
+      startit();
+      stopit();
+    </script>
+    <div>
+      <marquee
+        width="100%"
+        scrolldelay="60"
+        direction="right"
+        height="30px"
+        class="top"
+      >
+        😄❤️👨‍🏫⛵️😍◾◽▪🚲🚃🕉😎🤴🎈🎇⚽🧿🟧🟪🟫⬛🪀🍕🍚🍻🥥🍇🍀🛴⛴❤💦✴💯⚠♻🟨🟩🟦📶🔘🔹🕞🕧🐄🐡🦗🙎‍♂️🏇💪🙌✍💅🎡🏐🎯🏆🥈♣🎖🔩🥇🍁🏵🌹🌻🚩🏳‍🌈⛪🌇🌦🌕🌈🌊⚡💥☢🆗➰💲®⚪🟥⬜◼◻▫🔶🔶
+      </marquee>
+      <marquee width="100%" direction="right" height="30px" class="bottom">
+        😄❤️👨‍🏫⛵️😍◾◽▪🚲🚃🕉😎🤴🎈🎇⚽🧿🟧🟪🟫⬛🪀🍕🍚🍻🥥🍇🍀🛴⛴❤💦✴💯⚠♻🟨🟩🟦📶🔘🔹🕞🕧🐄🐡🦗🙎‍♂️🏇💪🙌✍💅🎡🏐🎯🏆🥈♣🎖🔩🥇🍁🏵🌹🌻🚩🏳‍🌈⛪🌇🌦🌕🌈🌊⚡💥☢🆗➰💲®⚪🟥⬜◼◻▫🔶🔶
+      </marquee>
+    </div>
+    
+    <div class="let">
+      <div class="happy">
+        <h1>
+          <span>H</span>
+          <span>A</span>
+          <span>P</span>
+          <span>P</span>
+          <span>Y</span>
+        </h1>
+      </div>
+      <div class="happy">
+        <h1 >
+          <span>T</span>
+          <span>E</span>
+          <span>A</span>
+          <span>C</span>
+          <span>H</span>
+          <span>E</span>
+          <span>R</span>
+          <span>S</span>
+        </h1>
+      </div>
+      <div class="happy">
+        <h1 >
+          <span>D</span>
+          <span>A</span>
+          <span>Y</span>
+        </h1>
+      </div>
+    </div>
   </body>
 </html>
