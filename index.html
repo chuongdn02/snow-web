@@ -1,89 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TeachersDay</title>
+<head>
+    <meta charset="UTF-8">
+    <title>圣诞🎄快乐</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+        }
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="gif">
-    </div>
-    <div class="pop-up">
-      <div id="wrapper">
-        <div class="envelope open">
-          <div class="flap front"></div>
-          <div class="flap top"></div>
-          <div class="letter"></div>
-        </div>
-      </div>
-    </div>
-    <div class="book">
-      <div class="book-first"></div>
+        #main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #message {
+            position: absolute;
+            top: 5%; /* Đặt chữ ở gần phía trên màn hình */
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(90deg, #FFD700, #FF4500, #ADFF2F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Bắt đầu bằng cách ẩn chữ */
+            pointer-events: none;
+            animation: slide-down 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+        }
+
+        @keyframes slide-down {
+            0% {
+                transform: translate(-50%, -20%);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, 10%);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -20%);
+                opacity: 0;
+            }
+        }
+
+        #overlay-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/168857151_946965629447773_109678064183587459_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=zmcXefh6hBEQ7kNvgHU8lm5&_nc_oc=AdiBawWhdtmF3GXAgOKc8bHonGtRz6BtFiPfCDYIc6k13vYivr46PSY8Dw5ebNOezbs&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=A3HlgevHJ_5E6TtFvmd7JIz&oh=00_AYAUk73LK7xv2AhPT-qSUBIz5Q_DPoui91WurKhVU5O9uw&oe=67911A2B') center/cover no-repeat;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease-in-out; /* Chuyển đổi độ trong suốt */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <video id="video1" muted autoplay loop src="./src/chrismas.mp4"></video>
+        <audio id="music1" preload="auto">
+            <source src="./src/JingleBellRock.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div id="message">Merry Christmas 🎄</div>
+        <div id="overlay-image"></div>
     </div>
 
-    <script src="./confetti.js"></script>
     <script>
-      const startit = () => {
-        setTimeout(function () {
-          confetti.start();
-        }, 2000);
-      };
-
-      const stopit = () => {
-        setTimeout(function () {
-          confetti.stop();
-        }, 7000);
-      };
-
-      startit();
-      stopit();
-    </script>
-    <div>
-      <marquee
-        width="100%"
-        scrolldelay="60"
-        direction="right"
-        height="30px"
-        class="top"
-      >
-        😄❤️👨‍🏫⛵️😍◾◽▪🚲🚃🕉😎🤴🎈🎇⚽🧿🟧🟪🟫⬛🪀🍕🍚🍻🥥🍇🍀🛴⛴❤💦✴💯⚠♻🟨🟩🟦📶🔘🔹🕞🕧🐄🐡🦗🙎‍♂️🏇💪🙌✍💅🎡🏐🎯🏆🥈♣🎖🔩🥇🍁🏵🌹🌻🚩🏳‍🌈⛪🌇🌦🌕🌈🌊⚡💥☢🆗➰💲®⚪🟥⬜◼◻▫🔶🔶
-      </marquee>
-      <marquee width="100%" direction="right" height="30px" class="bottom">
-        😄❤️👨‍🏫⛵️😍◾◽▪🚲🚃🕉😎🤴🎈🎇⚽🧿🟧🟪🟫⬛🪀🍕🍚🍻🥥🍇🍀🛴⛴❤💦✴💯⚠♻🟨🟩🟦📶🔘🔹🕞🕧🐄🐡🦗🙎‍♂️🏇💪🙌✍💅🎡🏐🎯🏆🥈♣🎖🔩🥇🍁🏵🌹🌻🚩🏳‍🌈⛪🌇🌦🌕🌈🌊⚡💥☢🆗➰💲®⚪🟥⬜◼◻▫🔶🔶
-      </marquee>
-    </div>
+        const video = document.getElementById("video1");
+        const music = document.getElementById("music1");
+        const message = document.getElementById("message");
+        const overlayImage = document.getElementById("overlay-image");
     
-    <div class="let">
-      <div class="happy">
-        <h1>
-          <span>H</span>
-          <span>A</span>
-          <span>P</span>
-          <span>P</span>
-          <span>Y</span>
-        </h1>
-      </div>
-      <div class="happy">
-        <h1 >
-          <span>T</span>
-          <span>E</span>
-          <span>A</span>
-          <span>C</span>
-          <span>H</span>
-          <span>E</span>
-          <span>R</span>
-          <span>S</span>
-        </h1>
-      </div>
-      <div class="happy">
-        <h1 >
-          <span>D</span>
-          <span>A</span>
-          <span>Y</span>
-        </h1>
-      </div>
-    </div>
-  </body>
+        // Thiết lập tốc độ phát video
+        video.playbackRate = 0.6;
+    
+        // Hiển thị hoặc ẩn chữ
+        const toggleMessage = (show) => {
+            message.style.display = show ? 'block' : 'none';
+        };
+    
+        // Hiển thị hoặc ẩn hình ảnh phủ
+        const toggleOverlayImage = (show) => {
+            overlayImage.style.opacity = show ? 0.3 : 0; // Đặt độ trong suốt 30%
+        };
+    
+        // Lắng nghe sự kiện khi video tải metadata để tính thời gian
+        video.addEventListener("loadedmetadata", () => {
+            const duration = video.duration; // Thời lượng video
+            const showMessageTime = duration - 4; // Thời gian để hiển thị chữ, 4 giây cuối
+            const showOverlayTime = duration - 2; // Thời gian để hiển thị hình, 2 giây cuối
+            
+            video.addEventListener("timeupdate", () => {
+                if (video.currentTime >= showMessageTime && video.currentTime < showOverlayTime) {
+                    toggleMessage(true); // Hiển thị chữ
+                } else {
+                    toggleMessage(false); // Ẩn chữ
+                }
+
+                if (video.currentTime >= showOverlayTime) {
+                    toggleOverlayImage(true); // Hiển thị ảnh
+                } else {
+                    toggleOverlayImage(false); // Ẩn ảnh
+                }
+            });
+        });
+    
+        // Phát nhạc khi video bắt đầu phát
+        video.addEventListener("play", () => {
+            if (music.readyState >= 3) {
+                music.play().catch((error) => {
+                    console.error("Audio autoplay failed due to browser restrictions:", error);
+                });
+            }
+        });
+    
+        // Xử lý lỗi âm thanh
+        music.addEventListener("error", () => {
+            console.error("Failed to load audio file. Check the file path or format.");
+        });
+    </script>
+</body>
 </html>
